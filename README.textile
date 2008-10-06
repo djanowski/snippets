@@ -1,0 +1,10 @@
+h1. Snippets
+
+  <%= snippet('intro') %>
+
+  <%= snippet('intro') do %>
+    This is some default introduction.
+    The client will take it from here.
+  <% end %>
+
+Copyright (c) 2008 Damian Janowski for CitrusByte, released under the MIT license

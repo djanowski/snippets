@@ -1,0 +1,22 @@
+Gem::Specification.new do |s|
+  s.name = 'snippets'
+  s.version = '0.0.1'
+  s.summary = %{Include snippets of content in your Rails views and let the client modify them.}
+  s.description = %{}
+  s.date = %q{2008-10-06}
+  s.author = "Damian Janowski"
+  s.email = "damian.janowski@gmail.com"
+
+  s.specification_version = 2 if s.respond_to? :specification_version=
+
+  s.files = <%= FileList['lib/**/*.rb', 'rails/**/*.rb', 'README*', 'MIT-LICENSE', 'Rakefile', 'doc/**/*.*'].inspect %>
+
+  s.require_paths = <%= FileList['lib/**'].inject(['lib']) do |require_paths,path|
+    require_paths << path if File.directory?(path) && !require_paths.include?(path)
+    require_paths
+  end.uniq.inspect %>
+
+  s.extra_rdoc_files = ["README.textile"]
+  s.has_rdoc = true
+  s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "tti", "--main", "README.textile"]
+end
