@@ -17,6 +17,10 @@ class Snippet < ActiveRecord::Base
     end
   end
 
+  def to_s
+    slug
+  end
+
   private
 
     def compile_text

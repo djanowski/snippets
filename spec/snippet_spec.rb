@@ -8,6 +8,8 @@ describe Snippet do
     Snippet.get('Homepage').should == 'Lorem ipsum'
 
     lambda { create(:slug => '') }.should raise_error
+
+    create(:slug => 'copy8').to_s.should == 'copy8'
   end
 
   it "does HTML escaping as a default parsing method" do
