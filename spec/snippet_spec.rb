@@ -33,6 +33,7 @@ describe Snippet do
 
     it "raises when it can't find a parser" do
       lambda { Snippet.get('copy7', :parser => 'made_up_parser') }.should raise_error
+      lambda { Snippet.parse('Some text', nil) }.should_not raise_error
     end
 
   end
