@@ -8,8 +8,8 @@ require 'spec'
 require 'active_record'
 require 'ruby-debug'
 
-Dependencies.load_paths << File.expand_path(File.dirname(__FILE__) + '/../lib')
-puts Dependencies.load_paths
+require File.dirname(__FILE__) + '/../lib/snippets'
+require File.dirname(__FILE__) + '/../lib/snippets/helper'
 
 ActiveRecord::Base.establish_connection :adapter => "sqlite3", :dbfile => ":memory:"
 
