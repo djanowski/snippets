@@ -12,18 +12,29 @@ describe Snippet do
     create(:slug => 'copy8').to_s.should == 'copy8'
   end
 
-  it "does HTML escaping as a default parsing method" do
+  it "does nothing as a default parsing method" do
     create(:slug => 'copy1', :text => 'Gems > Plugins')
 
-    Snippet.get('copy1').should == 'Gems &gt; Plugins'
+    Snippet.get('copy1').should == 'Gems > Plugins'
   end
 
-  it "allows for other parsing methods" do
-    create(:slug => 'copy6', :text => '*A snippet*', :parser => 'textile')
+  describe 'parsing methods' do
+    it "can take plain text" do
+      create(:slug => 'copy9', :text => 'Gems > Plugins', :parser => 'plain_text')
 
-    Snippet.get('copy6').should == '<p><strong>A snippet</strong></p>'
+      Snippet.get('copy9').should == 'Gems &gt; Plugins'
+    end
 
-    lambda { Snippet.get('copy7', :parser => 'made_up_parser') }.should raise_error
+    it "can take Textile" do
+      create(:slug => 'copy6', :text => '*A snippet*', :parser => 'textile')
+
+      Snippet.get('copy6').should == '<p><strong>A snippet</strong></p>'
+    end
+
+    it "raises when it can't find a parser" do
+      lambda { Snippet.get('copy7', :parser => 'made_up_parser') }.should raise_error
+    end
+
   end
 
   it "is unique by slug" do

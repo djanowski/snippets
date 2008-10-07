@@ -11,7 +11,6 @@ class Snippet < ActiveRecord::Base
     end
 
     def parse(text, parser = nil)
-      parser = 'html' if parser.blank?
       klass = Snippets::Parsers.const_get(parser.to_s.classify)
       klass.parse(text)
     end
@@ -24,6 +23,7 @@ class Snippet < ActiveRecord::Base
   private
 
     def compile_text
+      self.parser = 'html' if parser.blank?
       self.compiled_text = Snippet.parse(text, parser)
     end
 

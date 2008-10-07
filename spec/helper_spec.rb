@@ -29,5 +29,21 @@ describe Snippets do
         _erbout << 'This is the default text'
       end
     end
+
+    it "allows to specify the parsing method" do
+      Snippet.should_receive(:get).with('homepage3', hash_including(:parser => 'html'))
+
+      _erbout = ''
+
+      @template.snippet('homepage3', :parser => 'html') do
+        _erbout << 'This is the default text'
+      end
+    end
+
+    it "allows to specify notes" do
+      Snippet.should_receive(:get).with('homepage3', hash_including(:notes => 'Editor: this text should not be longer than 20 characters.'))
+
+      @template.snippet('homepage3', :notes => 'Editor: this text should not be longer than 20 characters.')
+    end
   end
 end

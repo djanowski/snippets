@@ -4,6 +4,7 @@
 
 require 'snippet'
 require 'snippets/parsers/html'
+require 'snippets/parsers/plain_text'
 require 'snippets/parsers/textile'
 
 module Snippets

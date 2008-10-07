@@ -1,8 +1,10 @@
+require 'erb'
+
 module Snippets
   module Parsers
-    class Html
+    class PlainText
       def self.parse(text)
-        text.to_s
+        ERB::Util.h(text)
       end
     end
   end

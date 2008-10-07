@@ -8,6 +8,8 @@ require 'spec'
 require 'active_record'
 require 'ruby-debug'
 
+$LOAD_PATH.unshift File.dirname(__FILE__) + '/../lib'
+
 require File.dirname(__FILE__) + '/../lib/snippets'
 require File.dirname(__FILE__) + '/../lib/snippets/helper'
 
@@ -16,8 +18,8 @@ ActiveRecord::Base.establish_connection :adapter => "sqlite3", :dbfile => ":memo
 ActiveRecord::Schema.define do
   create_table :snippets do |t|
     t.string :slug
-    t.string :text
-    t.string :compiled_text
+    t.text :text
+    t.text :compiled_text
     t.string :parser
     t.timestamps
   end
