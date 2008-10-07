@@ -1,11 +1,11 @@
 class CreateSnippets < ActiveRecord::Migration
   def self.up
     create_table :snippets, :force => true do |t|
-      t.string :slug
-      t.string :text
-      t.string :compiled_text
-      t.string :parser
-      t.string :notes
+      t.string  :slug
+      t.text    :text
+      t.text    :compiled_text
+      t.string  :parser
+      t.string  :notes
 
       t.timestamps
     end
