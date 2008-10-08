@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'snippets'
-  s.version = '0.1.4'
+  s.version = '0.1.5'
   s.summary = %{Include snippets of content in your Rails views and let the client modify them.}
   s.description = %{}
   s.date = %q{2008-10-06}
