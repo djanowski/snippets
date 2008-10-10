@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.specification_version = 2 if s.respond_to? :specification_version=
 
-  s.files = ["lib/snippet.rb", "lib/snippets/helper.rb", "lib/snippets/parsers/html.rb", "lib/snippets/parsers/plain_text.rb", "lib/snippets/parsers/textile.rb", "lib/snippets.rb", "rails/init.rb", "README.textile", "MIT-LICENSE", "Rakefile"]
+  s.files = ["lib/snippet.rb", "lib/snippets/helper.rb", "lib/snippets/parsers/html.rb", "lib/snippets/parsers/plain_text.rb", "lib/snippets/parsers/textile.rb", "lib/snippets.rb", "rails/init.rb", "init.rb", "README.textile", "MIT-LICENSE", "Rakefile"]
 
   s.require_paths = ['lib']
 
