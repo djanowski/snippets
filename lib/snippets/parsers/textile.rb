@@ -1,5 +1,7 @@
-gem 'RedCloth'
-require 'RedCloth'
+unless defined?(RedCloth)
+  gem 'RedCloth'
+  require 'RedCloth'
+end
 
 module Snippets
   module Parsers
