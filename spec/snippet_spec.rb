@@ -8,8 +8,6 @@ describe Snippet do
     Snippet.get('Homepage').should == 'Lorem ipsum'
 
     lambda { create(:slug => '') }.should raise_error
-
-    create(:slug => 'copy8').to_s.should == 'copy8'
   end
 
   it "does nothing as a default parsing method" do
@@ -53,5 +51,19 @@ describe Snippet do
 
     Snippet.get('copy5', :text => 'Dolor sit amet').should == 'Dolor sit amet'
     Snippet.find_by_slug('copy5').text.should == 'Dolor sit amet'
+  end
+
+  describe "with variables" do
+    it "can receive an array of parameters (sprintf-like)" do
+      create(:slug => 'copy_with_params', :text => 'Hello, %s!')
+
+      (Snippet.get('copy_with_params') % 'world').should == 'Hello, world!'
+    end
+
+    it "can receive named variables as a hash" do
+      create(:slug => 'copy_with_named_params', :text => 'Hello, {{name}} {{surname}}!')
+
+      (Snippet.get('copy_with_named_params') % {:name => 'Albert', :surname => 'Einstein'}).should == 'Hello, Albert Einstein!'
+    end
   end
 end
